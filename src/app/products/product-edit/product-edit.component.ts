@@ -96,7 +96,7 @@ export class ProductEditComponent {
     if (this.productForm.valid) {
       if (this.productForm.dirty) {
         const p = { ...this.product, ...this.productForm.value };
-
+        this.spinnerService.setLoader(true);
         if (p.id === 0) {
           this.productService.createProduct(p).subscribe({
             next: () => this.onSaveComplete(),
@@ -119,6 +119,7 @@ export class ProductEditComponent {
   onSaveComplete(): void {
     // Reset the form to clear the flags
     this.productForm.reset();
+    this.spinnerService.setLoader(false);
     this.router.navigate([""]);
   }
 }

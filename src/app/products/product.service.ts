@@ -48,8 +48,7 @@ export class ProductService {
 
   createProduct(product: Product): Observable<Product> {
     const headers = new HttpHeaders({ "Content-Type": "application/json" });
-    product.id = null;
-    product.productCode = "GDN-222";
+    product.id = null;    
     return this.http
       .post<Product>(this.productsUrl, product, { headers })
       .pipe(
