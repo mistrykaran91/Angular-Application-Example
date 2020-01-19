@@ -87,6 +87,8 @@ export class ProductEditComponent {
             next: () => this.onSaveComplete(),
             error: err => console.log(err)
           });
+        } else {
+          this.spinnerService.setLoader(false);
         }
       });
     }

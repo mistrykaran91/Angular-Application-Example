@@ -57,6 +57,8 @@ export class ProductDetailComponent {
             next: () => this.onSaveComplete(),
             error: err => console.log(err)
           });
+        } else {
+          this.spinnerService.setLoader(false);
         }
       });
     }
