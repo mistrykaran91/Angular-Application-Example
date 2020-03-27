@@ -1,14 +1,33 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>AngularApplicationExample</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">  
-</head>
-<body>
-  <app-root></app-root>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <title>AngularApplicationExample</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <script charset="UTF-8">
+      window["adrum-start-time"] = new Date().getTime();
+      (function(config) {
+        config.appKey = "AD-AAB-AAV-TDE";
+        config.adrumExtUrlHttp = "http://cdn.appdynamics.com";
+        config.adrumExtUrlHttps = "https://cdn.appdynamics.com";
+        config.beaconUrlHttp = "http://pdx-col.eum-appdynamics.com";
+        config.beaconUrlHttps = "https://pdx-col.eum-appdynamics.com";
+        config.geoResolverUrlHttp =
+          "http://mistrykaran91.github.io/Angular-Application-Example/";
+        config.geoResolverUrlHttps =
+          "https://mistrykaran91.github.io/Angular-Application-Example/";
+        config.xd = { enable: true };
+      })(window["adrum-config"] || (window["adrum-config"] = {}));
+    </script>
+    <script src="//cdn.appdynamics.com/adrum/adrum-4.5.15.2691.js"></script>
+  </head>
+  <body>
+    <app-root></app-root>
+  </body>
 </html>
