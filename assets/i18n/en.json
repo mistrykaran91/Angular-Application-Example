@@ -48,5 +48,11 @@
   "SHARED.EDIT": "Edit",
   "SHARED.DELETE": "Delete",
   "SHARED.CANCEL": "Cancel",
+  "SHARED.LANGUAGE": "Language",
+  "SHARED.THEME": "Theme",
+  "SHARED.LIGHT_THEME": "Light Theme",
+  "SHARED.DARK_THEME": "Dark Theme",
+  "SHARED.SETTINGS":"Settings",
+  "SHARED.CLOSE":"Close",
   "SHARED.FILTER.MINLENGTH": "Minimun 3 Characters..."
 }

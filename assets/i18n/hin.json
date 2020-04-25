@@ -19,7 +19,7 @@
   "PRODUCT.DELETED": "उत्पाद हटा दिया गया",
   "PRODUCT.SAVED": "उत्पाद सहेजा गया",
   "PRODUCT.UPDATED": "उत्पाद अद्यतन",
-  "PRODUCT.FILTER":"फ़िल्टर उत्पाद",
+  "PRODUCT.FILTER": "फ़िल्टर उत्पाद",
 
   "PERSON.TITLE": "व्यक्ति",
   "PERSON.ADD": "व्यक्ति जोड़ें",
@@ -38,7 +38,7 @@
   "PERSON.NOT_FOUND": "व्यक्ति नहीं मिला",
   "PERSON.DELETE.CONFIRMATION": "वास्तव में व्यक्ति को हटा दें",
   "PERSON.DELETED": "व्यक्ति को हटा दिया गया",
-  "PERSON.FILTER":"फ़िल्टर व्यक्तियों",
+  "PERSON.FILTER": "फ़िल्टर व्यक्तियों",
 
   "SHARED.HINDI": "हिंदी",
   "SHARED.ENGLISH": "अंग्रेज़ी",
@@ -48,5 +48,11 @@
   "SHARED.DELETE": "हटाएं",
   "SHARED.CANCEL": "रद्द करना",
   "SHARED.EDIT": "संपादित करें",
-  "SHARED.FILTER.MINLENGTH" : "मिनिमुन 3 वर्ण ..."
+  "SHARED.LANGUAGE": "भाषा",
+  "SHARED.THEME": "थीम",
+  "SHARED.LIGHT_THEME": "प्रकाश थीम",
+  "SHARED.DARK_THEME": "डार्क थीम",
+  "SHARED.SETTINGS":"समायोजन",
+  "SHARED.CLOSE":"बंद करे",
+  "SHARED.FILTER.MINLENGTH": "मिनिमुन 3 वर्ण ..."
 }
