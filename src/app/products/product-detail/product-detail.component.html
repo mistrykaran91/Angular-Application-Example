@@ -1,89 +1,115 @@
-<mat-card class="example-card">
-  <mat-card-header color="primary" fxLayout="row" fxLayoutAlign="center center">
-    <h3 class="detail-header">
-      {{ ("PRODUCT.DETAIL" | translate) + pageTitle }}
-    </h3>
-  </mat-card-header>
-
-  <mat-card-content>
-    <mat-list *ngIf="product" >
-      <mat-list-item>
-        <mat-icon color="primary" mat-list-icon>keyboard_arrow_right</mat-icon>
-        <h4 fxFlex="50">{{ "PRODUCT.NAME" | translate }}</h4>
-        <p fxFlex="50">{{ product.productName }}</p>
-      </mat-list-item>
-      <mat-divider></mat-divider>
-      <mat-list-item>
-        <mat-icon color="primary" mat-list-icon>keyboard_arrow_right</mat-icon>
-        <h4 fxFlex="50">{{ "PRODUCT.CODE" | translate }}</h4>
-        <p fxFlex="50">{{ product.productCode }}</p>
-      </mat-list-item>
-      <mat-divider></mat-divider>
-      <mat-list-item>
-        <mat-icon color="primary" mat-list-icon>keyboard_arrow_right</mat-icon>
-        <h4 fxFlex="50">{{ "PRODUCT.DESCRIPTION" | translate }}</h4>
-        <p fxFlex="50">{{ product.description }}</p>
-      </mat-list-item>
-      <mat-divider></mat-divider>
-      <mat-list-item>
-        <mat-icon color="primary" mat-list-icon>keyboard_arrow_right</mat-icon>
-        <h4 fxFlex="50">{{ "PRODUCT.PRICE" | translate }}</h4>
-        <p fxFlex="50">{{ product.price | currency }}</p>
-      </mat-list-item>
-      <mat-divider></mat-divider>
-      <mat-list-item>
-        <mat-icon color="primary" mat-list-icon>keyboard_arrow_right</mat-icon>
-        <h4 fxFlex="50">{{ "PRODUCT.QTY_IN_STOCK" | translate }}</h4>
-        <p fxFlex="50">{{ product.quantityInStock | currency }}</p>
-      </mat-list-item>
-      <mat-divider></mat-divider>
-      <mat-list-item>
-        <mat-icon color="primary" mat-list-icon>keyboard_arrow_right</mat-icon>
-        <h4 fxFlex="50">{{ "PRODUCT.SUPPLIER" | translate }}</h4>
-        <p fxFlex="50">{{ product.supplier }}</p>
-      </mat-list-item>
-      <mat-divider></mat-divider>
-      <mat-list-item>
-        <mat-icon color="primary" mat-list-icon>keyboard_arrow_right</mat-icon>
-        <h4 fxFlex="50">{{ "PRODUCT.CATEGORY" | translate }}</h4>
-        <p fxFlex="50">{{ product.category }}</p>
-      </mat-list-item>
-      <mat-divider></mat-divider>
-      <mat-list-item>
-        <mat-icon color="primary" mat-list-icon>keyboard_arrow_right</mat-icon>
-        <h4 fxFlex="50">{{ "PRODUCT.TAGS" | translate }}</h4>
-        <mat-chip-list aria-label="Tags">
-          <mat-chip *ngFor="let tag of product.tags || []">{{ tag }}</mat-chip>
-        </mat-chip-list>
-      </mat-list-item>
-      <mat-divider></mat-divider>
-      <mat-list-item>
-        <mat-icon color="primary" mat-list-icon>keyboard_arrow_right</mat-icon>
-        <h4 fxFlex="50">{{ "PRODUCT.CATALOG" | translate }}</h4>
-        <p fxFlex="50">{{ product.sendCatalog }}</p>
-      </mat-list-item>
-    </mat-list>
-  </mat-card-content>
-  <mat-card-actions>
-    <button
-      type="button"
-      mat-raised-button
+<div fxFlex="row" class="pad-22">
+  <mat-card class="example-card">
+    <mat-card-header
       color="primary"
-      [routerLink]="['edit']"
+      fxLayout="row"
+      fxLayoutAlign="center center"
     >
-      {{ "SHARED.EDIT" | translate }}
-    </button>
+      <h3 class="detail-header">
+        {{ ("PRODUCT.DETAIL" | translate) + pageTitle }}
+      </h3>
+    </mat-card-header>
 
-    <button
-      type="button"
-      mat-raised-button
-      color="warn"
-      (click)="deleteProduct()"
-    >
-      {{ "SHARED.DELETE" | translate }}
-    </button>
-    <button type="button" mat-raised-button [routerLink]="['']">
-      {{ "SHARED.CANCEL" | translate }}
-    </button>
-  </mat-card-actions>
-</mat-card>
+    <mat-card-content>
+      <mat-list *ngIf="product">
+        <mat-list-item>
+          <mat-icon color="primary" mat-list-icon
+            >keyboard_arrow_right</mat-icon
+          >
+          <h4 fxFlex="50">{{ "PRODUCT.NAME" | translate }}</h4>
+          <p fxFlex="50">{{ product.productName }}</p>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <mat-icon color="primary" mat-list-icon
+            >keyboard_arrow_right</mat-icon
+          >
+          <h4 fxFlex="50">{{ "PRODUCT.CODE" | translate }}</h4>
+          <p fxFlex="50">{{ product.productCode }}</p>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <mat-icon color="primary" mat-list-icon
+            >keyboard_arrow_right</mat-icon
+          >
+          <h4 fxFlex="50">{{ "PRODUCT.DESCRIPTION" | translate }}</h4>
+          <p fxFlex="50">{{ product.description }}</p>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <mat-icon color="primary" mat-list-icon
+            >keyboard_arrow_right</mat-icon
+          >
+          <h4 fxFlex="50">{{ "PRODUCT.PRICE" | translate }}</h4>
+          <p fxFlex="50">{{ product.price | currency }}</p>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <mat-icon color="primary" mat-list-icon
+            >keyboard_arrow_right</mat-icon
+          >
+          <h4 fxFlex="50">{{ "PRODUCT.QTY_IN_STOCK" | translate }}</h4>
+          <p fxFlex="50">{{ product.quantityInStock | currency }}</p>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <mat-icon color="primary" mat-list-icon
+            >keyboard_arrow_right</mat-icon
+          >
+          <h4 fxFlex="50">{{ "PRODUCT.SUPPLIER" | translate }}</h4>
+          <p fxFlex="50">{{ product.supplier }}</p>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <mat-icon color="primary" mat-list-icon
+            >keyboard_arrow_right</mat-icon
+          >
+          <h4 fxFlex="50">{{ "PRODUCT.CATEGORY" | translate }}</h4>
+          <p fxFlex="50">{{ product.category }}</p>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <mat-icon color="primary" mat-list-icon
+            >keyboard_arrow_right</mat-icon
+          >
+          <h4 fxFlex="50">{{ "PRODUCT.TAGS" | translate }}</h4>
+          <mat-chip-list aria-label="Tags">
+            <mat-chip *ngFor="let tag of product.tags || []">{{
+              tag
+            }}</mat-chip>
+          </mat-chip-list>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <mat-icon color="primary" mat-list-icon
+            >keyboard_arrow_right</mat-icon
+          >
+          <h4 fxFlex="50">{{ "PRODUCT.CATALOG" | translate }}</h4>
+          <p fxFlex="50">{{ product.sendCatalog }}</p>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+    <mat-card-actions>
+      <button
+        type="button"
+        mat-raised-button
+        color="primary"
+        [routerLink]="['edit']"
+      >
+        {{ "SHARED.EDIT" | translate }}
+      </button>
+
+      <button
+        type="button"
+        mat-raised-button
+        color="warn"
+        (click)="deleteProduct()"
+      >
+        {{ "SHARED.DELETE" | translate }}
+      </button>
+      <button type="button" mat-raised-button [routerLink]="['']">
+        {{ "SHARED.CANCEL" | translate }}
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

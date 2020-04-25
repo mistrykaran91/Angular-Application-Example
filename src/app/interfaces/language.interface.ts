@@ -13,3 +13,6 @@ export const LANGUAGE = [
     name: "HINDI"
   }
 ] as Language[];
+
+export const defaultLanguage = LANGUAGE[0].code;
+

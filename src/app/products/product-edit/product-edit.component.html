@@ -1,134 +1,136 @@
-<mat-card class="example-card">
-  <mat-card-header>
-    {{
-      (product && product.id)
-        ? ("PRODUCT.EDIT_DETAIL" | translate) + ": " + product?.productName
-        : ("PRODUCT.ADD" | translate)
-    }}
-  </mat-card-header>
+<div fxFlex="row" class="pad-22">
+  <mat-card class="example-card">
+    <mat-card-header>
+      {{
+        product && product.id
+          ? ("PRODUCT.EDIT_DETAIL" | translate) + ": " + product?.productName
+          : ("PRODUCT.ADD" | translate)
+      }}
+    </mat-card-header>
 
-  <mat-card-content *ngIf="product">
-    <form novalidate [formGroup]="productForm">
-      <div fxLayout="column">
-        <mat-form-field>
-          <input
-            matInput
-            placeholder="{{ 'PRODUCT.NAME' | translate }}"
-            formControlName="productName"
-          />
-        </mat-form-field>
+    <mat-card-content *ngIf="product">
+      <form novalidate [formGroup]="productForm">
+        <div fxLayout="column">
+          <mat-form-field>
+            <input
+              matInput
+              placeholder="{{ 'PRODUCT.NAME' | translate }}"
+              formControlName="productName"
+            />
+          </mat-form-field>
 
-        <mat-form-field>
-          <input
-            matInput
-            placeholder="{{ 'PRODUCT.CODE' | translate }}"
-            formControlName="productCode"
-          />
-        </mat-form-field>
+          <mat-form-field>
+            <input
+              matInput
+              placeholder="{{ 'PRODUCT.CODE' | translate }}"
+              formControlName="productCode"
+            />
+          </mat-form-field>
 
-        <mat-form-field>
-          <textarea
-            matInput
-            placeholder="{{ 'PRODUCT.DESCRIPTION' | translate }}"
-            formControlName="description"
-          ></textarea>
-        </mat-form-field>
-        <mat-form-field>
-          <input
-            matInput
-            type="number"
-            placeholder="{{ 'PRODUCT.PRICE' | translate }}"
-            formControlName="price"
-          />
-        </mat-form-field>
+          <mat-form-field>
+            <textarea
+              matInput
+              placeholder="{{ 'PRODUCT.DESCRIPTION' | translate }}"
+              formControlName="description"
+            ></textarea>
+          </mat-form-field>
+          <mat-form-field>
+            <input
+              matInput
+              type="number"
+              placeholder="{{ 'PRODUCT.PRICE' | translate }}"
+              formControlName="price"
+            />
+          </mat-form-field>
 
-        <mat-form-field>
-          <input
-            matInput
-            type="number"
-            placeholder="{{ 'PRODUCT.QTY_IN_STOCK' | translate }}"
-            formControlName="quantityInStock"
-          />
-        </mat-form-field>
+          <mat-form-field>
+            <input
+              matInput
+              type="number"
+              placeholder="{{ 'PRODUCT.QTY_IN_STOCK' | translate }}"
+              formControlName="quantityInStock"
+            />
+          </mat-form-field>
 
-        <mat-form-field>
-          <mat-label>{{ "PRODUCT.SUPPLIER" | translate }}</mat-label>
-          <mat-select formControlName="supplier">
-            <mat-option
-              *ngFor="let supplier of productSuppliers"
-              [value]="supplier.id"
+          <mat-form-field>
+            <mat-label>{{ "PRODUCT.SUPPLIER" | translate }}</mat-label>
+            <mat-select formControlName="supplier">
+              <mat-option
+                *ngFor="let supplier of productSuppliers"
+                [value]="supplier.id"
+              >
+                {{ supplier.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-label>{{ "PRODUCT.CATEGORY" | translate }}</mat-label>
+          <mat-radio-group
+            color="primary"
+            name="category"
+            fxLayoutGap="10px"
+            formControlName="category"
+          >
+            <mat-radio-button
+              *ngFor="let category of productCategories"
+              [value]="category.name"
             >
-              {{ supplier.name }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
+              {{ category.name }}
+            </mat-radio-button>
+          </mat-radio-group>
 
-        <mat-label>{{ "PRODUCT.CATEGORY" | translate }}</mat-label>
-        <mat-radio-group
-          color="primary"
-          name="category"
-          fxLayoutGap="10px"
-          formControlName="category"
-        >
-          <mat-radio-button
-            *ngFor="let category of productCategories"
-            [value]="category.name"
-          >
-            {{ category.name }}
-          </mat-radio-button>
-        </mat-radio-group>
+          <mat-form-field>
+            <input
+              matInput
+              type="text"
+              placeholder="{{ 'PRODUCT.TAGS' | translate }}"
+              [matChipInputFor]="tagChipList"
+              [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+              [matChipInputAddOnBlur]="addOnBlur"
+              (matChipInputTokenEnd)="addTag($event)"
+            />
+          </mat-form-field>
 
-        <mat-form-field>
-          <input
-            matInput
-            type="text"
-            placeholder="{{ 'PRODUCT.TAGS' | translate }}"
-            [matChipInputFor]="tagChipList"
-            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-            [matChipInputAddOnBlur]="addOnBlur"
-            (matChipInputTokenEnd)="addTag($event)"
-          />
-        </mat-form-field>
+          <mat-chip-list #tagChipList aria-label="Tag selection">
+            <mat-chip
+              *ngFor="let tag of productForm.get('tags').value"
+              [selectable]="selectable"
+              [removable]="removable"
+              (removed)="remove(tag)"
+            >
+              {{ tag }}
+              <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+            </mat-chip>
+          </mat-chip-list>
 
-        <mat-chip-list #tagChipList aria-label="Tag selection">
-          <mat-chip
-            *ngFor="let tag of productForm.get('tags').value"
-            [selectable]="selectable"
-            [removable]="removable"
-            (removed)="remove(tag)"
-          >
-            {{ tag }}
-            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-          </mat-chip>
-        </mat-chip-list>
+          <mat-checkbox color="primary" formControlName="sendCatalog">
+            {{ "PRODUCT.CATALOG" | translate }}
+          </mat-checkbox>
+        </div>
+      </form>
+    </mat-card-content>
+    <mat-card-actions>
+      <button
+        type="button"
+        mat-raised-button
+        color="primary"
+        (click)="saveProduct()"
+        [disabled]="!productForm?.valid"
+      >
+        {{ "SHARED.SAVE" | translate }}
+      </button>
 
-        <mat-checkbox color="primary" formControlName="sendCatalog">
-          {{ "PRODUCT.CATALOG" | translate }}
-        </mat-checkbox>
-      </div>
-    </form>
-  </mat-card-content>
-  <mat-card-actions>
-    <button
-      type="button"
-      mat-raised-button
-      color="primary"
-      (click)="saveProduct()"
-      [disabled]="!productForm?.valid"
-    >
-      {{ "SHARED.SAVE" | translate }}
-    </button>
-
-    <button
-      type="button"
-      mat-raised-button
-      color="warn"
-      (click)="deleteProduct()"
-    >
-      {{ "SHARED.DELETE" | translate }}
-    </button>
-    <button type="button" mat-raised-button [routerLink]="['']">
-      {{ "SHARED.CANCEL" | translate }}
-    </button>
-  </mat-card-actions>
-</mat-card>
+      <button
+        type="button"
+        mat-raised-button
+        color="warn"
+        (click)="deleteProduct()"
+      >
+        {{ "SHARED.DELETE" | translate }}
+      </button>
+      <button type="button" mat-raised-button [routerLink]="['']">
+        {{ "SHARED.CANCEL" | translate }}
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

@@ -19,6 +19,7 @@ import { PersonListComponent } from './person/person-list/person-list.component'
 import { PersonDetailComponent } from './person/person-detail/person-detail.component';
 import { PersonEditComponent } from './person/person-edit/person-edit.component';
 import { HttpConfigInterceptor } from './services/http-config.interceptor';
+import { OverlayModule } from '@angular/cdk/overlay';
 
 
 // AoT requires an exported function for factories
@@ -42,6 +43,7 @@ export function createTranslateLoader(http: HttpClient) {
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    OverlayModule,
     FlexLayoutModule.withConfig({}),
     ReactiveFormsModule,
     FormsModule,

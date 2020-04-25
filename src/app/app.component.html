@@ -6,33 +6,27 @@
 
     <span fxHide.gt-sm>LOGO</span>
 
-    <div fxLayoutAlign="start baseline" fxShow="true" fxHide.lt-md>
-      <a mat-button (click)="onListProduct()">
-        LOGO
-      </a>
+    <div fxLayout="row" fxHide.lt-md style="width: 100%;">
+      <div fxFlex="80" fxLayoutAlign="start baseline">
+        <a mat-button (click)="onListProduct()">
+          LOGO
+        </a>
 
-      <a mat-button (click)="onListProduct()">
-        {{ "PRODUCT.TITLE" | translate }}
-      </a>
+        <a mat-button (click)="onListProduct()">
+          {{ "PRODUCT.TITLE" | translate }}
+        </a>
 
-      <a mat-button (click)="onListPerson()">
-        {{ "PERSON.TITLE" | translate }}
-      </a>
-
-      <mat-form-field class="lang-select">
-        <mat-select
-          [(ngModel)]="language"
-          (selectionChange)="onLanguageChange()"
-        >
-          <mat-option
-            *ngFor="let language of languages"
-            [value]="language.code"
-          >
-            {{ "SHARED." + language.name | translate }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+        <a mat-button (click)="onListPerson()">
+          {{ "PERSON.TITLE" | translate }}
+        </a>
+      </div>
+      <div fxFlex="20" fxLayoutAlign="end baseline">
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon>settings</mat-icon>
+        </button>
+      </div>
     </div>
+    <div fxLayoutAlign="start baseline" fxShow="true" fxHide.lt-md></div>
   </mat-toolbar-row>
 </mat-toolbar>
 
@@ -43,30 +37,78 @@
 <mat-sidenav-container fxFlexFill>
   <mat-sidenav #sidenav>
     <mat-nav-list>
-      <a (click)="sidenav.toggle()" mat-list-item>Close</a>
-      <a mat-list-item (click)="onListProduct()">
-        {{ "PRODUCT.TITLE" | translate }}
-      </a>
-
-      <a mat-list-item (click)="onListPerson()">
-        {{ "PERSON.TITLE" | translate }}
-      </a>
-
-      <mat-form-field mat-list-item>
-        <mat-select
-          [(ngModel)]="language"
-          (selectionChange)="onLanguageChange()">
-          <mat-option
-            *ngFor="let language of languages"
-            [value]="language.code"
-          >
-            {{ "SHARED." + language.name | translate }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+      <div mat-list-item>
+        &nbsp;&nbsp;
+        <button mat-icon-button (click)="onListProduct()">
+          <mat-icon color="primary">toys</mat-icon> &nbsp;&nbsp;
+          <span>{{ "PRODUCT.TITLE" | translate }}</span>
+        </button>
+      </div>
+      <mat-divider></mat-divider>
+      <div mat-list-item>
+        &nbsp;&nbsp;
+        <button mat-icon-button (click)="onListPerson()">
+          <mat-icon color="primary">person</mat-icon> &nbsp;&nbsp;
+          <span>{{ "PERSON.TITLE" | translate }}</span>
+        </button>
+      </div>
+      <mat-divider></mat-divider>
+      <div mat-list-item>
+        &nbsp;&nbsp;
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon color="primary">settings</mat-icon> &nbsp;&nbsp;
+          <span>{{ "SHARED.SETTINGS" | translate }}</span>
+        </button>
+      </div>
+      <mat-divider></mat-divider>
+      <div mat-list-item>
+        &nbsp;&nbsp;
+        <button mat-icon-button (click)="sidenav.toggle()">
+          <mat-icon color="primary">close</mat-icon> &nbsp;&nbsp;
+          <span>{{ "SHARED.CLOSE" | translate }}</span>
+        </button>
+      </div>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content fxFlexFill>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
+
+<mat-menu #menu="matMenu">
+  <div mat-menu-item>
+    <mat-icon color="primary">language</mat-icon>
+    <span>{{ "SHARED.LANGUAGE" | translate }}</span>
+    <div>
+      <mat-radio-group
+        color="primary"
+        [(ngModel)]="language"
+        (change)="onLanguageChange()"
+      >
+        <mat-radio-button
+          *ngFor="let language of languages"
+          [value]="language.code"
+          >{{ "SHARED." + language.name | translate }}</mat-radio-button
+        >
+      </mat-radio-group>
+    </div>
+  </div>
+  <div mat-menu-item>
+    <mat-icon color="primary">color_lens</mat-icon>
+    <span>{{ "SHARED.THEME" | translate }}</span>
+    <div>
+      <mat-radio-group
+        color="primary"
+        [(ngModel)]="theme"
+        (change)="onThemeChange()"
+      >
+        <mat-radio-button [value]="Theme.LIGHT_THEME">{{
+          "SHARED." + Theme.LIGHT_THEME | translate
+        }}</mat-radio-button>
+        <mat-radio-button [value]="Theme.DARK_THEME">{{
+          "SHARED." + Theme.DARK_THEME | translate
+        }}</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div>
+</mat-menu>

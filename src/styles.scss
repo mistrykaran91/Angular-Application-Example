@@ -1,12 +1,43 @@
 /* You can add global styles to this file, and also import other style files */
-@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
-@import 'https://fonts.googleapis.com/icon?family=Material+Icons';
-@import './assets/scss/_typography';
+// @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+// @import 'https://fonts.googleapis.com/icon?family=Material+Icons';
 
-.detail-header {
-  color: #673ab7;
+@import "~@angular/material/theming";
+@import "./assets/scss/_typography";
+
+@include mat-core();
+
+$candy-app-primary: mat-palette($mat-indigo);
+$candy-app-accent: mat-palette($mat-pink, A200, A100, A400);
+$candy-app-warn: mat-palette($mat-red);
+
+$candy-app-theme: mat-light-theme(
+  $candy-app-primary,
+  $candy-app-accent,
+  $candy-app-warn
+);
+
+@include angular-material-theme($candy-app-theme);
+
+.dark-theme {
+  $primary-dark: mat-palette($mat-pink, 700);
+  $accent-dark: mat-palette($mat-green);
+  $warn-dark: mat-palette($mat-red);
+
+  $theme-dark: mat-dark-theme($primary-dark, $accent-dark, $warn-dark);
+
+  @include angular-material-theme($theme-dark);
 }
+
+// .detail-header {
+//   color: #673ab7;
+// }
 .pad-22 {
   padding: 22px;
 }
 
+html, body {
+  box-sizing: border-box;
+  height: 100%;
+  margin: 0;
+}
