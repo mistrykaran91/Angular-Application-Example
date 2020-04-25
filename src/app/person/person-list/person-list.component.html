@@ -6,68 +6,66 @@
       color="primary"
       [routerLink]="['0/edit']"
     >
-    {{ "PRODUCT.ADD" | translate }}
+      {{ "PERSON.ADD" | translate }}
     </button>
   </div>
   <br />
   <mat-form-field>
-    <mat-label> {{ "PRODUCT.FILTER" | translate }}  ( {{ "SHARED.FILTER.MINLENGTH" | translate }} )</mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium">
+    <mat-label>
+      {{ "PERSON.FILTER" | translate }} (
+      {{ "SHARED.FILTER.MINLENGTH" | translate }} )</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" />
   </mat-form-field>
   <div class="table-container mat-elevation-z8">
     <table
       mat-table
       [dataSource]="dataSource"
       matSort
-      matSortActive="productName"
+      matSortActive="name"
       matSortDisableClear
       matSortDirection="asc"
     >
       <!-- ID Column -->
-      <ng-container matColumnDef="productCode">
-        <th mat-header-cell *matHeaderCellDef>
-          {{ "PRODUCT.ID" | translate }}
-        </th>
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>{{ "PERSON.ID" | translate }}</th>
         <td mat-cell *matCellDef="let row">
-          <span class="mobile-label">{{ "PRODUCT.ID" | translate }}</span>
+          <span class="mobile-label">{{ "PERSON.ID" | translate }}</span>
           <a [routerLink]="[row.id]">
-            {{ row.productCode }}
+            {{ row.id }}
           </a>
         </td>
       </ng-container>
 
       <!-- Progress Column -->
-      <ng-container matColumnDef="productName">
+      <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
-          {{ "PRODUCT.NAME" | translate }}
+          {{ "PERSON.NAME" | translate }}
         </th>
         <td mat-cell *matCellDef="let row">
-          <span class="mobile-label">{{ "PRODUCT.NAME" | translate }}</span>
-          {{ row.productName }}
+          <span class="mobile-label">{{ "PERSON.NAME" | translate }}</span>
+          {{ row.name }}
         </td>
       </ng-container>
 
       <!-- Name Column -->
-      <ng-container matColumnDef="price">
+      <ng-container matColumnDef="gender">
         <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
-          {{ "PRODUCT.PRICE" | translate }}
+          {{ "PERSON.GENDER" | translate }}
         </th>
         <td mat-cell *matCellDef="let row">
-          <span class="mobile-label">{{ "PRODUCT.PRICE" | translate }}</span>
-          {{ row.price | currency }}
+          <span class="mobile-label">{{ "PERSON.GENDER" | translate }}</span>
+          {{ row.gender }}
         </td>
       </ng-container>
 
       <!-- Color Column -->
-      <ng-container matColumnDef="quantityInStock">
+      <ng-container matColumnDef="email">
         <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
-          {{ "PRODUCT.QTY_IN_STOCK" | translate }}
+          {{ "PERSON.EMAIL" | translate }}
         </th>
         <td mat-cell *matCellDef="let row">
-          <span class="mobile-label">
-            {{ "PRODUCT.QTY_IN_STOCK" | translate }}</span
-          >
-          {{ row.quantityInStock | currency }}
+          <span class="mobile-label"> {{ "PERSON.EMAIL" | translate }}</span>
+          {{ row.email }}
         </td>
       </ng-container>
 

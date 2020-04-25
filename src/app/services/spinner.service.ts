@@ -11,6 +11,6 @@ export class SpinnerService {
   setLoader(loading: boolean) {
     setTimeout(() => {
       this.isLoadingSubject.next(loading);
-    }, 500);
+    }, 100);
   }
 }

@@ -4,39 +4,39 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable, throwError, of } from "rxjs";
 import { catchError, tap, map } from "rxjs/operators";
 
-import { Product } from "./product";
-import { Categories, ProductData } from './product-data';
 import {
   ConfirmationDialogComponent,
   Confirmation
 } from "../utitlity/confirmation/confirmation.component";
 import { TranslateService } from "@ngx-translate/core";
 import { MatSnackBar } from "@angular/material/snack-bar";
+import { Person } from "./person";
+import { PersonData } from './person-data';
 
 @Injectable({
   providedIn: "root"
 })
-export class ProductService {
-  private productsUrl = "api/products";
-  private lastId = ProductData.products.length + 1;
-  
+export class PersonService {
+  private personsUrl = "api/persons";
+  private lastId = PersonData.persons.length + 1;
+
   constructor(
     private http: HttpClient,
     public dialog: MatDialog,
     private translate: TranslateService,
     private snackBar: MatSnackBar
-  ) { }
+  ) {}
 
   // Real http call can use this active, direction and pageIndex sort option
-  getProducts(
+  getPersons(
     active: string,
     direction: string,
     pageIndex: number
   ): Observable<any> {
     const headers = new HttpHeaders({ "Content-Type": "application/json" });
 
-    return this.http.get(this.productsUrl, { headers }).pipe(
-      map((data: Product[]) => {
+    return this.http.get(this.personsUrl, { headers }).pipe(
+      map((data: Person[]) => {
         // Mocked pagination result object
         return {
           totalCount: data.length,
@@ -48,56 +48,56 @@ export class ProductService {
     );
   }
 
-  getProduct(id: number): Observable<Product> {
+  getPerson(id: number): Observable<Person> {
     if (id === 0) {
-      return of(this.initializeProduct());
+      return of(this.initializePerson());
     }
-    const url = `${this.productsUrl}/${id}`;
-    return this.http.get<Product>(url).pipe(
-      tap(data => console.log("getProduct: " + JSON.stringify(data))),
+    const url = `${this.personsUrl}/${id}`;
+    return this.http.get<Person>(url).pipe(
+      tap(data => console.log("getPerson: " + JSON.stringify(data))),
       catchError(error => throwError(error))
     );
   }
 
-  createProduct(product: Product): Observable<Product> {
+  createPerson(person: Person): Observable<Person> {
     const headers = new HttpHeaders({ "Content-Type": "application/json" });
     this.lastId = this.lastId + 1;
-    product.id = this.lastId;
+    person.id = this.lastId;
     return this.http
-      .post<Product>(this.productsUrl, product, { headers })
+      .post<Person>(this.personsUrl, person, { headers })
       .pipe(
-        tap(data => console.log("createProduct: " + JSON.stringify(data))),
+        tap(data => console.log("createPerson: " + JSON.stringify(data))),
         catchError(error => throwError(error))
       );
   }
 
-  deleteProduct(id: number): Observable<{}> {
+  deletePerson(id: number): Observable<{}> {
     const headers = new HttpHeaders({ "Content-Type": "application/json" });
-    const url = `${this.productsUrl}/${id}`;
+    const url = `${this.personsUrl}/${id}`;
     return this.http
-      .delete<Product>(url, { headers })
+      .delete<Person>(url, { headers })
       .pipe(
-        tap(data => console.log("deleteProduct: " + id)),
+        tap(data => console.log("deletePerson: " + id)),
         catchError(error => throwError(error))
       );
   }
 
-  updateProduct(product: Product): Observable<Product> {
+  updatePerson(person: Person): Observable<Person> {
     const headers = new HttpHeaders({ "Content-Type": "application/json" });
-    const url = `${this.productsUrl}/${product.id}`;
+    const url = `${this.personsUrl}/${person.id}`;
     return this.http
-      .put<Product>(url, product, { headers })
+      .put<Person>(url, person, { headers })
       .pipe(
-        tap(() => console.log("updateProduct: " + product.id)),
-        // Return the product on an update
-        map(() => product),
+        tap(() => console.log("updatePerson: " + person.id)),
+        // Return the Person on an update
+        map(() => person),
         catchError(error => throwError(error))
       );
   }
 
-  deleteProductOnConfirm(product: Product) {
+  deletePersonOnConfirm(person: Person) {
     return new Promise((resolve, reject) => {
-      if (product.id === 0) {
+      if (person.id === 0) {
         // Don't delete, it was never saved.
         resolve(true);
       } else {
@@ -105,17 +105,17 @@ export class ProductService {
           width: "250px",
           data: {
             message:
-              this.translate.instant("PRODUCT.DELETE.CONFIRMATION") +
-              `: ${product.productName}?`
+              this.translate.instant("PERSON.DELETE.CONFIRMATION") +
+              `: ${person.name}?`
           } as Confirmation
         });
 
         dialogRef.afterClosed().subscribe(result => {
           if (result) {
-            this.deleteProduct(product.id).subscribe({
+            this.deletePerson(person.id).subscribe({
               next: () => {
                 const deleteConfirmation = this.translate.instant(
-                  "PRODUCT.DELETED"
+                  "PERSON.DELETED"
                 );
                 this.snackBar.open(deleteConfirmation, null, {
                   duration: 2000
@@ -132,19 +132,18 @@ export class ProductService {
     });
   }
 
-  public initializeProduct(): Product {
+  public initializePerson(): Person {
     // Return an initialized object
     return {
       id: 0,
-      productName: null,
-      productCode: null,
-      price: null,
-      description: null,
-      quantityInStock: null,
-      category: Categories.Gaming,
-      supplier: 1,
-      tags: [],
-      sendCatalog: false
+      address: "",
+      dob: null,
+      email: null,
+      gender: null,
+      height: null,
+      name: null,
+      personRoles: null,
+      qualification: null
     };
   }
 }

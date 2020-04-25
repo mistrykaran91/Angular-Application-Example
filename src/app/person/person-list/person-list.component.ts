@@ -1,34 +1,28 @@
 import { Component, ViewChild } from "@angular/core";
 import { merge } from "rxjs";
 import { switchMap, startWith, map } from "rxjs/operators";
-import { MatPaginator } from "@angular/material/paginator";
 import { MatTableDataSource } from '@angular/material';
+import { MatPaginator } from "@angular/material/paginator";
 import { MatSort } from "@angular/material/sort";
-
-import { Product, ProductResult } from "../product";
-import { ProductService } from "../product.service";
+import { PersonService } from "../person.service";
+import { Person, PersonResult } from "../person";
 
 @Component({
-  templateUrl: "./product-list.component.html",
-  styleUrls: ["./product-list.component.scss"]
+  templateUrl: "./person-list.component.html",
+  styleUrls: ["./person-list.component.scss"]
 })
-export class ProductListComponent {
-  public pageTitle = "Product List";
+export class PersonListComponent {
+  public pageTitle = "Person List";
 
-  displayedColumns: string[] = [
-    "productCode",
-    "productName",
-    "price",
-    "quantityInStock"
-  ];
-  // products: Product[] = [];
+  displayedColumns: string[] = ["id", "name", "gender", "email"];
+  // persons: Person[] = [];
+  public dataSource = new MatTableDataSource<Person>();
   totalCount: number = 0;
-  public dataSource = new MatTableDataSource<Product>();
 
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort: MatSort;
 
-  constructor(private productService: ProductService) { }
+  constructor(private personService: PersonService) { }
 
   ngAfterViewInit() {
     this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0));
@@ -40,22 +34,21 @@ export class ProductListComponent {
           const { active, direction } = this.sort;
           const pageIndex = this.paginator.pageIndex;
 
-          return this.productService.getProducts(active, direction, pageIndex);
+          return this.personService.getPersons(active, direction, pageIndex);
         }),
-        map((data: ProductResult) => {
+        map((data: PersonResult) => {
           this.totalCount = data.totalCount;
           return data.items;
         })
       )
-      .subscribe((products: Product[]) => (this.dataSource.data = products));
+      .subscribe((persons: Person[]) => (this.dataSource.data = persons));
   }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
-
+    
     if (filterValue.length > 2 || filterValue.trim() === '') {
       this.dataSource.filter = filterValue.trim().toLowerCase();
     }
-
   }
 }

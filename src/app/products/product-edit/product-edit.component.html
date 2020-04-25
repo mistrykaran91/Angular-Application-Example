@@ -1,6 +1,10 @@
-<mat-card fxFlex class="example-card">
+<mat-card class="example-card">
   <mat-card-header>
-    {{ pageTitle }}
+    {{
+      (product && product.id)
+        ? ("PRODUCT.EDIT_DETAIL" | translate) + ": " + product?.productName
+        : ("PRODUCT.ADD" | translate)
+    }}
   </mat-card-header>
 
   <mat-card-content *ngIf="product">
@@ -9,7 +13,7 @@
         <mat-form-field>
           <input
             matInput
-            placeholder="Product Name"
+            placeholder="{{ 'PRODUCT.NAME' | translate }}"
             formControlName="productName"
           />
         </mat-form-field>
@@ -17,7 +21,7 @@
         <mat-form-field>
           <input
             matInput
-            placeholder="Product Code"
+            placeholder="{{ 'PRODUCT.CODE' | translate }}"
             formControlName="productCode"
           />
         </mat-form-field>
@@ -25,7 +29,7 @@
         <mat-form-field>
           <textarea
             matInput
-            placeholder="Description"
+            placeholder="{{ 'PRODUCT.DESCRIPTION' | translate }}"
             formControlName="description"
           ></textarea>
         </mat-form-field>
@@ -33,7 +37,7 @@
           <input
             matInput
             type="number"
-            placeholder="Price"
+            placeholder="{{ 'PRODUCT.PRICE' | translate }}"
             formControlName="price"
           />
         </mat-form-field>
@@ -42,13 +46,13 @@
           <input
             matInput
             type="number"
-            placeholder="Quantity In Stock"
+            placeholder="{{ 'PRODUCT.QTY_IN_STOCK' | translate }}"
             formControlName="quantityInStock"
           />
         </mat-form-field>
 
         <mat-form-field>
-          <mat-label>Supplier</mat-label>
+          <mat-label>{{ "PRODUCT.SUPPLIER" | translate }}</mat-label>
           <mat-select formControlName="supplier">
             <mat-option
               *ngFor="let supplier of productSuppliers"
@@ -59,7 +63,7 @@
           </mat-select>
         </mat-form-field>
 
-        <mat-label>Category</mat-label>
+        <mat-label>{{ "PRODUCT.CATEGORY" | translate }}</mat-label>
         <mat-radio-group
           color="primary"
           name="category"
@@ -73,6 +77,34 @@
             {{ category.name }}
           </mat-radio-button>
         </mat-radio-group>
+
+        <mat-form-field>
+          <input
+            matInput
+            type="text"
+            placeholder="{{ 'PRODUCT.TAGS' | translate }}"
+            [matChipInputFor]="tagChipList"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            [matChipInputAddOnBlur]="addOnBlur"
+            (matChipInputTokenEnd)="addTag($event)"
+          />
+        </mat-form-field>
+
+        <mat-chip-list #tagChipList aria-label="Tag selection">
+          <mat-chip
+            *ngFor="let tag of productForm.get('tags').value"
+            [selectable]="selectable"
+            [removable]="removable"
+            (removed)="remove(tag)"
+          >
+            {{ tag }}
+            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+          </mat-chip>
+        </mat-chip-list>
+
+        <mat-checkbox color="primary" formControlName="sendCatalog">
+          {{ "PRODUCT.CATALOG" | translate }}
+        </mat-checkbox>
       </div>
     </form>
   </mat-card-content>
@@ -84,7 +116,7 @@
       (click)="saveProduct()"
       [disabled]="!productForm?.valid"
     >
-      SAVE
+      {{ "SHARED.SAVE" | translate }}
     </button>
 
     <button
@@ -93,8 +125,10 @@
       color="warn"
       (click)="deleteProduct()"
     >
-      DELETE
+      {{ "SHARED.DELETE" | translate }}
     </button>
-    <button type="button" mat-raised-button [routerLink]="['']">CANCEL</button>
+    <button type="button" mat-raised-button [routerLink]="['']">
+      {{ "SHARED.CANCEL" | translate }}
+    </button>
   </mat-card-actions>
 </mat-card>

@@ -1,8 +1,14 @@
-<h1 mat-dialog-title>Delete</h1>
-<div mat-dialog-content>
+<div>
+  <h1 mat-dialog-title>{{ "SHARED.DELETE" | translate }}</h1>
+  <div mat-dialog-content>
     {{ message }}
-</div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">NO</button>
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>YES</button>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">
+      {{ "SHARED.NO" | translate }}
+    </button>
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>
+      {{ "SHARED.YES" | translate }}
+    </button>
+  </div>
 </div>
