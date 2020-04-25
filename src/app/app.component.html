@@ -45,17 +45,17 @@
     <mat-nav-list>
       <a (click)="sidenav.toggle()" mat-list-item>Close</a>
       <a mat-list-item (click)="onListProduct()">
-        {{ "PRODUCT.LIST" | translate }}
+        {{ "PRODUCT.TITLE" | translate }}
       </a>
-      <a mat-list-item (click)="onAddProduct()">
-        {{ "PRODUCT.ADD" | translate }}
+
+      <a mat-list-item (click)="onListPerson()">
+        {{ "PERSON.TITLE" | translate }}
       </a>
 
       <mat-form-field mat-list-item>
         <mat-select
           [(ngModel)]="language"
-          (selectionChange)="onLanguageChange()"
-        >
+          (selectionChange)="onLanguageChange()">
           <mat-option
             *ngFor="let language of languages"
             [value]="language.code"

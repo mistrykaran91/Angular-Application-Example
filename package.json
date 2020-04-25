@@ -8,8 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "gh-pages-build": "ng build --prod --base-href https://mistrykaran91.github.io/Angular-Application-Example/",
-    "gh-pages-deploy": "ng deploy --base-href https://mistrykaran91.github.io/Angular-Application-Example/",
+    "gh-pages-build": "ng build --prod --base-href https://mistrykaran91.github.io/Angular-Application-Example",
+    "gh-pages-deploy": "ng deploy --base-href https://mistrykaran91.github.io/Angular-Application-Example",
     "gh-pages-prod-deploy": "npm run gh-pages-build && npm run gh-pages-deploy"
   },
   "private": true,
