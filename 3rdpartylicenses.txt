@@ -114,7 +114,13 @@ THE SOFTWARE.
 
 @angular/material/card
 
+@angular/material/checkbox
+
+@angular/material/chips
+
 @angular/material/core
+
+@angular/material/datepicker
 
 @angular/material/dialog
 
@@ -134,6 +140,8 @@ THE SOFTWARE.
 
 @angular/material/select
 
+@angular/material/sidenav
+
 @angular/material/snack-bar
 
 @angular/material/sort
@@ -148,6 +156,12 @@ THE SOFTWARE.
 MIT
 
 @angular/router
+MIT
+
+@ngx-translate/core
+MIT
+
+@ngx-translate/http-loader
 MIT
 
 angular-in-memory-web-api
