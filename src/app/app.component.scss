@@ -34,7 +34,7 @@ ul li {
 
 .mat-menu-item {
   font-family: 13px;
-  height: 99px;
+  height: 55px;
   width: 275px;
   overflow: hidden;
 }
@@ -43,8 +43,8 @@ ul li {
   max-width: none !important;
 }
 
-.mat-radio-button ~ .mat-radio-button {
-  margin-left: 22px;
+.mat-radio-label {
+  font-size: 13px;
 }
 
 .mat-nav-list {

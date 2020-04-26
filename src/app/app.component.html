@@ -1,4 +1,4 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" [dir]="direction">
   <mat-toolbar-row>
     <button mat-icon-button (click)="sidenav.toggle()" fxHide.gt-sm>
       <mat-icon>menu</mat-icon>
@@ -34,7 +34,7 @@
   <mat-progress-bar mode="indeterminate"></mat-progress-bar>
 </div>
 
-<mat-sidenav-container fxFlexFill>
+<mat-sidenav-container fxFlexFill [dir]="direction">
   <mat-sidenav #sidenav>
     <mat-nav-list>
       <div mat-list-item>
@@ -76,40 +76,51 @@
 </mat-sidenav-container>
 
 <mat-menu #menu="matMenu">
-  <div mat-menu-item>
+  <div fxLayout="row" fxLayoutAlign="center center" mat-menu-item>
     <mat-icon color="primary">language</mat-icon>
-    <span>{{ "SHARED.LANGUAGE" | translate }}</span>
-    <div>
-      <mat-radio-group
-        color="primary"
-        [(ngModel)]="language"
-        (change)="onLanguageChange()"
+
+    <mat-radio-group
+      fxFlex="row"
+      color="primary"
+      [(ngModel)]="language"
+      (change)="onLanguageChange()"
+    >
+      <mat-radio-button
+        fxFlex="50"
+        *ngFor="let language of languages"
+        [value]="language.code"
+        >{{ "SHARED." + language.name | translate }}</mat-radio-button
       >
-        <mat-radio-button
-          *ngFor="let language of languages"
-          [value]="language.code"
-          >{{ "SHARED." + language.name | translate }}</mat-radio-button
-        >
-      </mat-radio-group>
-    </div>
+    </mat-radio-group>
   </div>
   <mat-divider></mat-divider>
-  <div mat-menu-item>
+  <div fxLayout="row" fxLayoutAlign="center center" mat-menu-item>
     <mat-icon color="primary">color_lens</mat-icon>
-    <span>{{ "SHARED.THEME" | translate }}</span>
-    <div>
-      <mat-radio-group
-        color="primary"
-        [(ngModel)]="theme"
-        (change)="onThemeChange()"
-      >
-        <mat-radio-button [value]="Theme.LIGHT_THEME">{{
-          "SHARED." + Theme.LIGHT_THEME | translate
-        }}</mat-radio-button>
-        <mat-radio-button [value]="Theme.DARK_THEME">{{
-          "SHARED." + Theme.DARK_THEME | translate
-        }}</mat-radio-button>
-      </mat-radio-group>
-    </div>
+    <mat-radio-group
+      fxFlex="row"
+      color="primary"
+      [(ngModel)]="theme"
+      (change)="onThemeChange()"
+    >
+      <mat-radio-button fxFlex="50" [value]="Theme.LIGHT_THEME">{{
+        "SHARED." + Theme.LIGHT_THEME | translate
+      }}</mat-radio-button>
+      <mat-radio-button fxFlex="50" [value]="Theme.DARK_THEME">{{
+        "SHARED." + Theme.DARK_THEME | translate
+      }}</mat-radio-button>
+    </mat-radio-group>
+  </div>
+  <mat-divider></mat-divider>
+  <div fxLayout="row" fxLayoutAlign="center center" mat-menu-item>
+    <mat-icon color="primary">compare_arrows</mat-icon>
+
+    <mat-radio-group fxFlex="row" color="primary" [(ngModel)]="direction">
+      <mat-radio-button fxFlex="50" [value]="Direction.LTR">{{
+        "SHARED." + Direction.LTR | translate
+      }}</mat-radio-button>
+      <mat-radio-button fxFlex="50" [value]="Direction.RTL">{{
+        "SHARED." + Direction.RTL | translate
+      }}</mat-radio-button>
+    </mat-radio-group>
   </div>
 </mat-menu>

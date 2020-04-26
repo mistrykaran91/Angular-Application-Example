@@ -50,9 +50,11 @@
   "SHARED.EDIT": "संपादित करें",
   "SHARED.LANGUAGE": "भाषा",
   "SHARED.THEME": "थीम",
-  "SHARED.LIGHT_THEME": "प्रकाश थीम",
-  "SHARED.DARK_THEME": "डार्क थीम",
+  "SHARED.LIGHT_THEME": "प्रकाश",
+  "SHARED.DARK_THEME": "डार्क",
   "SHARED.SETTINGS":"समायोजन",
   "SHARED.CLOSE":"बंद करे",
+  "SHARED.RTL":"दाएं से बाएं",
+  "SHARED.LTR":"बाएं से दाएं",
   "SHARED.FILTER.MINLENGTH": "मिनिमुन 3 वर्ण ..."
 }

@@ -5,6 +5,7 @@ import { LANGUAGE } from './interfaces/language.interface';
 import { Router } from '@angular/router';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { Theme } from './enums/theme.enum';
+import { Direction } from './enums/direction.enum';
 
 @Component({
   selector: "app-root",
@@ -21,6 +22,8 @@ export class AppComponent {
   language = LANGUAGE[0].code;
   theme = Theme.LIGHT_THEME;
   Theme = Theme;
+  Direction = Direction;
+  direction = Direction.LTR;
 
   constructor(
     public spinnerService: SpinnerService,
@@ -46,7 +49,6 @@ export class AppComponent {
       this.overlayContainer.getContainerElement().classList.remove('dark-theme');
       this.componentCssClass = '';
     }
-
   }
 
   onAddProduct() {

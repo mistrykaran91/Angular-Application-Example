@@ -50,9 +50,11 @@
   "SHARED.CANCEL": "Cancel",
   "SHARED.LANGUAGE": "Language",
   "SHARED.THEME": "Theme",
-  "SHARED.LIGHT_THEME": "Light Theme",
-  "SHARED.DARK_THEME": "Dark Theme",
+  "SHARED.LIGHT_THEME": "Light",
+  "SHARED.DARK_THEME": "Dark",
   "SHARED.SETTINGS":"Settings",
+  "SHARED.RTL":"RTL",
+  "SHARED.LTR":"LTR",
   "SHARED.CLOSE":"Close",
   "SHARED.FILTER.MINLENGTH": "Minimun 3 Characters..."
 }
