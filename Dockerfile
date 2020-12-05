@@ -1,4 +1,4 @@
-FROM node:alpine AS builder
+FROM node AS builder
 WORKDIR './var/Angular-Application-Example'
 COPY package.json .
 RUN npm install
