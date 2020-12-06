@@ -7,3 +7,5 @@ RUN npm run build
  
 FROM nginx
 COPY --from=builder /app/dist/Angular-Application-Example/ /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
