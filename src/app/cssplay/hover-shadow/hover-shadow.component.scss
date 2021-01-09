@@ -1,0 +1,86 @@
+$face-width: 100px;
+$face-height: 100px;
+$face-color: #f2dd68;
+
+.face {
+  position: relative;
+  height: $face-width;
+  width: $face-height;
+  background: $face-color;
+  margin: 0 $face-height * 0.15 $face-height * 0.3 0;
+  border-radius: 50%;
+
+  .face:hover {
+    .eye {
+      height: 1px;
+      top: 37px;
+    }
+  }
+}
+
+.face::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  top: -$face-height * 0.08;
+  left: -$face-width * 0.08;
+  box-shadow: 8px 8px 0 0 rgba(0, 0, 0, 0.07);
+}
+
+.eyes {
+  position: relative;
+  display: flex;
+  top: 32px;
+  border: 0px;
+  place-content: space-evenly;
+  .eye {
+    border: 0px !important;
+    position: relative;
+    transform: translate(-50%);
+    width: 9px;
+    height: 11px;
+    display: block;
+    margin-top: 4px;
+    left: 5px;
+    border-radius: 50%;
+    background: #995710;
+  }
+
+  .eye-brow {
+    display: flex;
+    place-content: center;
+    border-top: 3px solid #995710;
+    width: 15px;
+  }
+}
+
+.mouth {
+  position: absolute;
+  // top: 85px;
+  left: 0;
+  right: 0;
+  width: 40px;
+  top: 60px;
+  height: 18px;
+  margin: 0 auto;
+  overflow: hidden;
+  background: transparent;
+  border-radius: 0 0 50px 50px;
+  border: 3px solid #995710;
+  -webkit-clip-path: inset(30% 0 0 0);
+  clip-path: inset(30% 0 0 0);
+  transition: 0.5s;
+}
+
+.close-eyes {
+  border-radius: 50% 100% 0% 0%;
+  -webkit-clip-path: inset(0% 0% 73% 0%);
+  clip-path: inset(0% 0% 73% 0%);
+}
+
+label {
+  font-size: 11px;
+}

@@ -1,3 +1,4 @@
+import { CssplayComponent } from './cssplay/cssplay.component';
 import { NgModule } from "@angular/core";
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { HttpClientModule, HTTP_INTERCEPTORS, HttpClient } from "@angular/common/http";
@@ -20,6 +21,20 @@ import { PersonDetailComponent } from './person/person-detail/person-detail.comp
 import { PersonEditComponent } from './person/person-edit/person-edit.component';
 import { HttpConfigInterceptor } from './services/http-config.interceptor';
 import { OverlayModule } from '@angular/cdk/overlay';
+import { SpinComponent } from './cssplay/spin/spin.component';
+import { HoverShadowComponent } from './cssplay/hover-shadow/hover-shadow.component';
+import { ShapeComponent } from './cssplay/shape/shape.component';
+import { FlipComponent } from './cssplay/flip/flip.component';
+import { TypewriterComponent } from './cssplay/typewriter/typewriter.component';
+import { MultipleTypewriterComponent } from './cssplay/multiple-typewriter/multiple-typewriter.component';
+import { ShareEffectComponent } from './cssplay/share-effect/share-effect.component';
+import { Screen1Component } from './screen1/screen1.component';
+import { Screen2Component } from './screen2/screen2.component';
+import { Screen3Component } from './screen3/screen3.component';
+import { Screen4Component } from './screen4/screen4.component';
+import { Screen5Component } from './screen5/screen5.component';
+import { Screen6Component } from './screen6/screen6.component';
+import { Screen7Component } from './screen7/screen7.component';
 
 
 // AoT requires an exported function for factories
@@ -36,7 +51,22 @@ export function createTranslateLoader(http: HttpClient) {
     PersonListComponent,
     PersonDetailComponent,
     PersonEditComponent,
-    ConfirmationDialogComponent
+    ConfirmationDialogComponent,
+    CssplayComponent,
+    SpinComponent,
+    HoverShadowComponent,
+    ShapeComponent,
+    FlipComponent,
+    TypewriterComponent,
+    MultipleTypewriterComponent,
+    ShareEffectComponent,
+    Screen1Component,
+    Screen2Component,
+    Screen3Component,
+    Screen4Component,
+    Screen5Component,
+    Screen6Component,
+    Screen7Component
   ],
   entryComponents: [ConfirmationDialogComponent],
   imports: [

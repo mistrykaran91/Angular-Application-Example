@@ -1,0 +1,41 @@
+.square {
+  width: 100px;
+  height: 100px;
+  background: Red;
+}
+
+.one-sixteenth {
+  transform: rotate(0.0625turn);
+  background: Red;
+}
+
+.one-eighth {
+  transform: rotate(0.125turn);
+  background: Red;
+}
+
+.three-sixteenth {
+  transform: rotate(0.1875turn);
+  background: Red;
+}
+
+.three-eighth {
+  transform: rotate(0.375turn);
+  background: Red;
+}
+
+.scale {
+  // transition-property: transform;
+  transition-duration: 3s;
+}
+.scale:hover {
+  transform: scale(2);
+}
+
+.scale-shrink{
+  transition-duration: 3s;
+}
+
+.scale-shrink:hover {
+  transform: scale(0.5);
+}

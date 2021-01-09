@@ -1,0 +1,136 @@
+<div fxFlex="row" class="pad-22">
+  <mat-card class="example-card">
+    <mat-card-header>
+      Create Project
+    </mat-card-header>
+
+    <mat-card-content>
+      <form novalidate [formGroup]="productForm">
+        <div fxLayout="row" fxLayoutGap="22px">
+          <mat-form-field fxFlex="50">
+            <input matInput placeholder="Airframe" formControlName="airframe" />
+          </mat-form-field>
+
+          <mat-form-field fxFlex="50">
+            <input matInput placeholder="APU" formControlName="apu" />
+          </mat-form-field>
+        </div>
+        <div fxLayout="row" fxLayoutGap="22px">
+          <mat-form-field fxFlex="50">
+            <input matInput placeholder="DOM" formControlName="dom" />
+          </mat-form-field>
+          <mat-form-field fxFlex="50">
+            <input
+              matInput
+              placeholder="Reg. current"
+              formControlName="regCurrent"
+            />
+          </mat-form-field>
+        </div>
+        <div fxLayout="row" fxLayoutGap="22px">
+          <mat-form-field fxFlex="50">
+            <input
+              matInput
+              placeholder="Reg. Future"
+              formControlName="regFuture"
+            />
+          </mat-form-field>
+          <mat-form-field fxFlex="50">
+            <input matInput placeholder="Type" formControlName="type" />
+          </mat-form-field>
+        </div>
+        <div fxLayout="row" fxLayoutGap="22px">
+          <mat-form-field fxFlex="50">
+            <input matInput placeholder="MSN" formControlName="msn" />
+          </mat-form-field>
+          <mat-form-field fxFlex="50">
+            <input
+              matInput
+              placeholder="Manual Eff."
+              formControlName="manualEff"
+            />
+          </mat-form-field>
+        </div>
+        <div fxLayout="row" fxLayoutGap="22px">
+          <mat-form-field fxFlex="50">
+            <input
+              matInput
+              placeholder="WV current"
+              formControlName="wvCurrent"
+            />
+          </mat-form-field>
+          <mat-form-field fxFlex="50">
+            <input
+              matInput
+              placeholder="WV hist/future"
+              formControlName="wvHistFuture"
+            />
+          </mat-form-field>
+        </div>
+        <div fxLayout="row" fxLayoutGap="22px">
+          <mat-form-field fxFlex="50">
+            <input matInput placeholder="APU Type" formControlName="apuType" />
+          </mat-form-field>
+          <mat-form-field fxFlex="50">
+            <input matInput placeholder="APU PN" formControlName="apuPN" />
+          </mat-form-field>
+        </div>
+        <div fxLayout="row" fxLayoutGap="22px">
+          <mat-form-field fxFlex="50">
+            <input matInput placeholder="APU SN" formControlName="apuSN" />
+          </mat-form-field>
+          <mat-form-field fxFlex="50">
+            <input
+              matInput
+              placeholder="Engine Type"
+              formControlName="engineType"
+            />
+          </mat-form-field>
+        </div>
+        <div fxLayout="row" fxLayoutGap="22px">
+          <mat-form-field fxFlex="50">
+            <input matInput placeholder="Engine 1" formControlName="engine1" />
+          </mat-form-field>
+          <mat-form-field fxFlex="50">
+            <input
+              matInput
+              type="number"
+              placeholder="Rating 1"
+              formControlName="rating1"
+            />
+          </mat-form-field>
+        </div>
+        <div fxLayout="row" fxLayoutGap="22px">
+          <mat-form-field fxFlex="50">
+            <input matInput placeholder="Engine 2" formControlName="engine2" />
+          </mat-form-field>
+          <mat-form-field fxFlex="50">
+            <input
+              matInput
+              placeholder="Rating 2"
+              formControlName="rating2"
+              type="number"
+            />
+          </mat-form-field>
+        </div>
+      </form>
+    </mat-card-content>
+    <mat-card-actions>
+      <button type="button" mat-raised-button color="primary">
+        Create
+      </button>
+
+      <button
+        type="button"
+        mat-raised-button
+        color="warn"
+        (click)="deleteProduct()"
+      >
+        {{ "SHARED.DELETE" | translate }}
+      </button>
+      <button type="button" mat-raised-button [routerLink]="['']">
+        {{ "SHARED.CANCEL" | translate }}
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

@@ -61,6 +61,11 @@ export class AppComponent {
     this.sidenav.close();
   }
 
+  onCssPlay() {
+    this.router.navigate(["cssplay"]);
+    this.sidenav.close();
+  }
+
   onListPerson() {
     this.router.navigate(["person"]);
     this.sidenav.close();
